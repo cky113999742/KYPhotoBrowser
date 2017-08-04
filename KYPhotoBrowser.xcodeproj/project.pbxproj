@@ -1,0 +1,479 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		42164F62C043CEBDAFAADDDF /* libPods-KYPhotoBrowser.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6772692EFF948EBDA7B5BE9A /* libPods-KYPhotoBrowser.a */; };
+		FAF876D11F31871B00C9AA2E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FAF876D01F31871B00C9AA2E /* Assets.xcassets */; };
+		FAF876D41F31871B00C9AA2E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAF876D21F31871B00C9AA2E /* LaunchScreen.storyboard */; };
+		FAF876E01F31876700C9AA2E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FAF876DD1F31876700C9AA2E /* AppDelegate.m */; };
+		FAF876E11F31876700C9AA2E /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FAF876DE1F31876700C9AA2E /* Info.plist */; };
+		FAF876E21F31876700C9AA2E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FAF876DF1F31876700C9AA2E /* main.m */; };
+		FAF876E61F31890700C9AA2E /* KYPhotoBrowserController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAF876E51F31890700C9AA2E /* KYPhotoBrowserController.m */; };
+		FAF876E91F3189AD00C9AA2E /* KYPhotoBrowserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FAF876E81F3189AD00C9AA2E /* KYPhotoBrowserManager.m */; };
+		FAF876EC1F31A4F500C9AA2E /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAF876EB1F31A4F500C9AA2E /* HomeViewController.m */; };
+		FAF876EF1F31ADAD00C9AA2E /* HomeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FAF876EE1F31ADAD00C9AA2E /* HomeCell.m */; };
+		FAF876F71F31B17900C9AA2E /* image_1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FAF876F11F31B17900C9AA2E /* image_1.jpg */; };
+		FAF876F81F31B17900C9AA2E /* image_2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FAF876F21F31B17900C9AA2E /* image_2.jpg */; };
+		FAF876F91F31B17900C9AA2E /* image_3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FAF876F31F31B17900C9AA2E /* image_3.jpg */; };
+		FAF876FA1F31B17900C9AA2E /* image_4.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = FAF876F41F31B17900C9AA2E /* image_4.jpeg */; };
+		FAF876FB1F31B17900C9AA2E /* image_5.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = FAF876F51F31B17900C9AA2E /* image_5.jpeg */; };
+		FAF876FC1F31B17900C9AA2E /* image_6.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = FAF876F61F31B17900C9AA2E /* image_6.jpeg */; };
+		FAF877031F31D9A600C9AA2E /* KYPhotoZoomView.m in Sources */ = {isa = PBXBuildFile; fileRef = FAF877021F31D9A600C9AA2E /* KYPhotoZoomView.m */; };
+		FAF877071F3213AD00C9AA2E /* KYPhotoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FAF877061F3213AD00C9AA2E /* KYPhotoModel.m */; };
+		FAF877571F337B8A00C9AA2E /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = FAF877561F337B8A00C9AA2E /* libsqlite3.tbd */; };
+		FAF877611F345E3200C9AA2E /* KYPhotoGestureHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = FAF877601F345E3200C9AA2E /* KYPhotoGestureHandle.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		6772692EFF948EBDA7B5BE9A /* libPods-KYPhotoBrowser.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-KYPhotoBrowser.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		761428028545A41E031D3BB9 /* Pods-KYPhotoBrowser.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KYPhotoBrowser.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KYPhotoBrowser/Pods-KYPhotoBrowser.debug.xcconfig"; sourceTree = "<group>"; };
+		C9E96575A6839290D7F149CC /* Pods-KYPhotoBrowser.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KYPhotoBrowser.release.xcconfig"; path = "Pods/Target Support Files/Pods-KYPhotoBrowser/Pods-KYPhotoBrowser.release.xcconfig"; sourceTree = "<group>"; };
+		FAF876C11F31871B00C9AA2E /* KYPhotoBrowser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KYPhotoBrowser.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FAF876D01F31871B00C9AA2E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		FAF876D31F31871B00C9AA2E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		FAF876DC1F31876700C9AA2E /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		FAF876DD1F31876700C9AA2E /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		FAF876DE1F31876700C9AA2E /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FAF876DF1F31876700C9AA2E /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		FAF876E41F31890700C9AA2E /* KYPhotoBrowserController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KYPhotoBrowserController.h; sourceTree = "<group>"; };
+		FAF876E51F31890700C9AA2E /* KYPhotoBrowserController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KYPhotoBrowserController.m; sourceTree = "<group>"; };
+		FAF876E71F3189AD00C9AA2E /* KYPhotoBrowserManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KYPhotoBrowserManager.h; sourceTree = "<group>"; };
+		FAF876E81F3189AD00C9AA2E /* KYPhotoBrowserManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KYPhotoBrowserManager.m; sourceTree = "<group>"; };
+		FAF876EA1F31A4F500C9AA2E /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
+		FAF876EB1F31A4F500C9AA2E /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
+		FAF876ED1F31ADAD00C9AA2E /* HomeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeCell.h; sourceTree = "<group>"; };
+		FAF876EE1F31ADAD00C9AA2E /* HomeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeCell.m; sourceTree = "<group>"; };
+		FAF876F11F31B17900C9AA2E /* image_1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image_1.jpg; sourceTree = "<group>"; };
+		FAF876F21F31B17900C9AA2E /* image_2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image_2.jpg; sourceTree = "<group>"; };
+		FAF876F31F31B17900C9AA2E /* image_3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image_3.jpg; sourceTree = "<group>"; };
+		FAF876F41F31B17900C9AA2E /* image_4.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image_4.jpeg; sourceTree = "<group>"; };
+		FAF876F51F31B17900C9AA2E /* image_5.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image_5.jpeg; sourceTree = "<group>"; };
+		FAF876F61F31B17900C9AA2E /* image_6.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image_6.jpeg; sourceTree = "<group>"; };
+		FAF877001F31D07C00C9AA2E /* KYPhotoBrowserMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KYPhotoBrowserMacro.h; sourceTree = "<group>"; };
+		FAF877011F31D9A600C9AA2E /* KYPhotoZoomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KYPhotoZoomView.h; sourceTree = "<group>"; };
+		FAF877021F31D9A600C9AA2E /* KYPhotoZoomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KYPhotoZoomView.m; sourceTree = "<group>"; };
+		FAF877051F3213AD00C9AA2E /* KYPhotoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KYPhotoModel.h; sourceTree = "<group>"; };
+		FAF877061F3213AD00C9AA2E /* KYPhotoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KYPhotoModel.m; sourceTree = "<group>"; };
+		FAF877561F337B8A00C9AA2E /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		FAF8775F1F345E3200C9AA2E /* KYPhotoGestureHandle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KYPhotoGestureHandle.h; sourceTree = "<group>"; };
+		FAF877601F345E3200C9AA2E /* KYPhotoGestureHandle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KYPhotoGestureHandle.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		FAF876BE1F31871B00C9AA2E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FAF877571F337B8A00C9AA2E /* libsqlite3.tbd in Frameworks */,
+				42164F62C043CEBDAFAADDDF /* libPods-KYPhotoBrowser.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		DEBAC1580B28EEB3E9B658FB /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				761428028545A41E031D3BB9 /* Pods-KYPhotoBrowser.debug.xcconfig */,
+				C9E96575A6839290D7F149CC /* Pods-KYPhotoBrowser.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		FAF876B81F31871B00C9AA2E = {
+			isa = PBXGroup;
+			children = (
+				FAF876C31F31871B00C9AA2E /* KYPhotoBrowser */,
+				FAF876C21F31871B00C9AA2E /* Products */,
+				FAF877551F337B8A00C9AA2E /* Frameworks */,
+				DEBAC1580B28EEB3E9B658FB /* Pods */,
+			);
+			sourceTree = "<group>";
+		};
+		FAF876C21F31871B00C9AA2E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FAF876C11F31871B00C9AA2E /* KYPhotoBrowser.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FAF876C31F31871B00C9AA2E /* KYPhotoBrowser */ = {
+			isa = PBXGroup;
+			children = (
+				FAF876F01F31B17100C9AA2E /* Resource */,
+				FAF876E31F31884200C9AA2E /* PhotoBrowser */,
+				FAF876DB1F31876700C9AA2E /* AppDelegate */,
+				FAF876D01F31871B00C9AA2E /* Assets.xcassets */,
+				FAF876D21F31871B00C9AA2E /* LaunchScreen.storyboard */,
+				FAF876C41F31871B00C9AA2E /* Supporting Files */,
+			);
+			path = KYPhotoBrowser;
+			sourceTree = "<group>";
+		};
+		FAF876C41F31871B00C9AA2E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		FAF876DB1F31876700C9AA2E /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				FAF876DC1F31876700C9AA2E /* AppDelegate.h */,
+				FAF876DD1F31876700C9AA2E /* AppDelegate.m */,
+				FAF876EA1F31A4F500C9AA2E /* HomeViewController.h */,
+				FAF876EB1F31A4F500C9AA2E /* HomeViewController.m */,
+				FAF876ED1F31ADAD00C9AA2E /* HomeCell.h */,
+				FAF876EE1F31ADAD00C9AA2E /* HomeCell.m */,
+				FAF876DE1F31876700C9AA2E /* Info.plist */,
+				FAF876DF1F31876700C9AA2E /* main.m */,
+			);
+			path = AppDelegate;
+			sourceTree = "<group>";
+		};
+		FAF876E31F31884200C9AA2E /* PhotoBrowser */ = {
+			isa = PBXGroup;
+			children = (
+				FAF877001F31D07C00C9AA2E /* KYPhotoBrowserMacro.h */,
+				FAF876E41F31890700C9AA2E /* KYPhotoBrowserController.h */,
+				FAF876E51F31890700C9AA2E /* KYPhotoBrowserController.m */,
+				FAF876E71F3189AD00C9AA2E /* KYPhotoBrowserManager.h */,
+				FAF876E81F3189AD00C9AA2E /* KYPhotoBrowserManager.m */,
+				FAF877011F31D9A600C9AA2E /* KYPhotoZoomView.h */,
+				FAF877021F31D9A600C9AA2E /* KYPhotoZoomView.m */,
+				FAF877051F3213AD00C9AA2E /* KYPhotoModel.h */,
+				FAF877061F3213AD00C9AA2E /* KYPhotoModel.m */,
+				FAF8775F1F345E3200C9AA2E /* KYPhotoGestureHandle.h */,
+				FAF877601F345E3200C9AA2E /* KYPhotoGestureHandle.m */,
+			);
+			path = PhotoBrowser;
+			sourceTree = "<group>";
+		};
+		FAF876F01F31B17100C9AA2E /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				FAF876F11F31B17900C9AA2E /* image_1.jpg */,
+				FAF876F21F31B17900C9AA2E /* image_2.jpg */,
+				FAF876F31F31B17900C9AA2E /* image_3.jpg */,
+				FAF876F41F31B17900C9AA2E /* image_4.jpeg */,
+				FAF876F51F31B17900C9AA2E /* image_5.jpeg */,
+				FAF876F61F31B17900C9AA2E /* image_6.jpeg */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		FAF877551F337B8A00C9AA2E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FAF877561F337B8A00C9AA2E /* libsqlite3.tbd */,
+				6772692EFF948EBDA7B5BE9A /* libPods-KYPhotoBrowser.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		FAF876C01F31871B00C9AA2E /* KYPhotoBrowser */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FAF876D81F31871B00C9AA2E /* Build configuration list for PBXNativeTarget "KYPhotoBrowser" */;
+			buildPhases = (
+				04689A235B876286E8C9A0FF /* [CP] Check Pods Manifest.lock */,
+				FAF876BD1F31871B00C9AA2E /* Sources */,
+				FAF876BE1F31871B00C9AA2E /* Frameworks */,
+				FAF876BF1F31871B00C9AA2E /* Resources */,
+				BE101CB78676068DCE4BDF77 /* [CP] Embed Pods Frameworks */,
+				1994A3C57B5A0985136E39B3 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = KYPhotoBrowser;
+			productName = KYPhotoBrowser;
+			productReference = FAF876C11F31871B00C9AA2E /* KYPhotoBrowser.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		FAF876B91F31871B00C9AA2E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0830;
+				ORGANIZATIONNAME = Cuikeyi;
+				TargetAttributes = {
+					FAF876C01F31871B00C9AA2E = {
+						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = J99252K2D9;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = FAF876BC1F31871B00C9AA2E /* Build configuration list for PBXProject "KYPhotoBrowser" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = FAF876B81F31871B00C9AA2E;
+			productRefGroup = FAF876C21F31871B00C9AA2E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				FAF876C01F31871B00C9AA2E /* KYPhotoBrowser */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		FAF876BF1F31871B00C9AA2E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FAF876E11F31876700C9AA2E /* Info.plist in Resources */,
+				FAF876F71F31B17900C9AA2E /* image_1.jpg in Resources */,
+				FAF876D41F31871B00C9AA2E /* LaunchScreen.storyboard in Resources */,
+				FAF876D11F31871B00C9AA2E /* Assets.xcassets in Resources */,
+				FAF876F81F31B17900C9AA2E /* image_2.jpg in Resources */,
+				FAF876FA1F31B17900C9AA2E /* image_4.jpeg in Resources */,
+				FAF876FC1F31B17900C9AA2E /* image_6.jpeg in Resources */,
+				FAF876F91F31B17900C9AA2E /* image_3.jpg in Resources */,
+				FAF876FB1F31B17900C9AA2E /* image_5.jpeg in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		04689A235B876286E8C9A0FF /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		1994A3C57B5A0985136E39B3 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-KYPhotoBrowser/Pods-KYPhotoBrowser-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BE101CB78676068DCE4BDF77 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-KYPhotoBrowser/Pods-KYPhotoBrowser-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		FAF876BD1F31871B00C9AA2E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FAF877071F3213AD00C9AA2E /* KYPhotoModel.m in Sources */,
+				FAF876EF1F31ADAD00C9AA2E /* HomeCell.m in Sources */,
+				FAF876E61F31890700C9AA2E /* KYPhotoBrowserController.m in Sources */,
+				FAF876E01F31876700C9AA2E /* AppDelegate.m in Sources */,
+				FAF876E21F31876700C9AA2E /* main.m in Sources */,
+				FAF877611F345E3200C9AA2E /* KYPhotoGestureHandle.m in Sources */,
+				FAF877031F31D9A600C9AA2E /* KYPhotoZoomView.m in Sources */,
+				FAF876EC1F31A4F500C9AA2E /* HomeViewController.m in Sources */,
+				FAF876E91F3189AD00C9AA2E /* KYPhotoBrowserManager.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		FAF876D21F31871B00C9AA2E /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FAF876D31F31871B00C9AA2E /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		FAF876D61F31871B00C9AA2E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		FAF876D71F31871B00C9AA2E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		FAF876D91F31871B00C9AA2E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 761428028545A41E031D3BB9 /* Pods-KYPhotoBrowser.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = J99252K2D9;
+				INFOPLIST_FILE = KYPhotoBrowser/AppDelegate/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.wemomo.KYPhotoBrowser;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		FAF876DA1F31871B00C9AA2E /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C9E96575A6839290D7F149CC /* Pods-KYPhotoBrowser.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = J99252K2D9;
+				INFOPLIST_FILE = KYPhotoBrowser/AppDelegate/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.wemomo.KYPhotoBrowser;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		FAF876BC1F31871B00C9AA2E /* Build configuration list for PBXProject "KYPhotoBrowser" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FAF876D61F31871B00C9AA2E /* Debug */,
+				FAF876D71F31871B00C9AA2E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FAF876D81F31871B00C9AA2E /* Build configuration list for PBXNativeTarget "KYPhotoBrowser" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FAF876D91F31871B00C9AA2E /* Debug */,
+				FAF876DA1F31871B00C9AA2E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = FAF876B91F31871B00C9AA2E /* Project object */;
+}
