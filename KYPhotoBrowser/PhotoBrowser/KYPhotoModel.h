@@ -18,10 +18,11 @@ typedef NS_ENUM(NSUInteger, KYImageType)
 
 @interface KYPhotoModel : NSObject
 
-@property (nonatomic, strong) NSData        *imageData;
-@property (nonatomic, strong) UIImage       *image;
-@property (nonatomic, strong) NSString      *thumbURLString;
-@property (nonatomic, strong) NSString      *bigURLString;
+@property (nonatomic, strong) NSData        *imageData;         /**< 图片数据 */
+@property (nonatomic, strong) UIImage       *image;             /**< 图片数据 */
+@property (nonatomic, strong) NSString      *thumbURLString;    /**< 普通图下载链接 */
+@property (nonatomic, strong) NSString      *originURLString;   /**< 原图下载链接 */
+@property (nonatomic, assign) CGFloat       originImageSize;    /**< 原图的大小，单位为 B */
 @property (nonatomic, assign) KYImageType   imageType;
 
 @end
