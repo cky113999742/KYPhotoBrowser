@@ -10,7 +10,7 @@
 #define KYPhotoBrowserMacro_h
 
 // browser中显示图片动画时长
-#define KYPhotoBrowserShowImageAnimationDuration 0.5f
-#define KYPhotoBrowserDismissAnimationDuration 0.6f
+#define KYPhotoBrowserShowImageAnimationDuration 0.3f
+#define KYPhotoBrowserDismissAnimationDuration 0.4f
 
 #endif /* KYPhotoBrowserMacro_h */

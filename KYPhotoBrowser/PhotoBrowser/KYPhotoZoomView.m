@@ -12,7 +12,9 @@
 
 @interface KYPhotoZoomView ()
 
-@property (nonatomic, strong) UIImageView *imageView;
+@property (nonatomic, strong) KYPhotoModel  *photoModel;
+@property (nonatomic, strong) UIImageView   *imageView;
+@property (nonatomic, strong) UIButton      *originButton;
 
 @end
 
@@ -44,6 +46,17 @@
     _imageView.clipsToBounds = YES;
     _imageView.userInteractionEnabled = YES;
     [self addSubview:_imageView];
+    
+    _originButton = [[UIButton alloc] init];
+    [_originButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    _originButton.titleLabel.font = [UIFont boldSystemFontOfSize:12.f];
+    _originButton.layer.masksToBounds = YES;
+    _originButton.layer.borderWidth = 1.f;
+    _originButton.layer.cornerRadius = 4.f;
+    _originButton.layer.borderColor = [[UIColor darkGrayColor] CGColor];
+    _originButton.hidden = YES;
+    [self addSubview:_originButton];
+    [_originButton addTarget:self action:@selector(downloadOriginImage) forControlEvents:UIControlEventTouchUpInside];
 }
 
 - (void)addGestures
@@ -59,6 +72,25 @@
     tap.numberOfTouchesRequired = 1;
     [tap requireGestureRecognizerToFail:doubleTap];
     [self addGestureRecognizer:tap];
+}
+
+// 下载原图
+- (void)downloadOriginImage
+{
+    UIImage *placeholderImage = nil;
+    if ([self.zoomDelegate respondsToSelector:@selector(photoZoomViewPlaceholderImage)]) {
+        placeholderImage = [self.zoomDelegate photoZoomViewPlaceholderImage];
+    }
+    [_imageView yy_setImageWithURL:[NSURL URLWithString:_photoModel.originURLString]
+                       placeholder:placeholderImage
+                           options:kNilOptions
+                          progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+                              
+                          }
+                         transform:nil
+                        completion:^(UIImage * _Nullable image, NSURL * _Nonnull url, YYWebImageFromType from, YYWebImageStage stage, NSError * _Nullable error) {
+                            _originButton.hidden = YES;
+                        }];
 }
 
 - (void)tapAction
@@ -101,8 +133,39 @@
     [self setZoomScale:1.f animated:NO];
 }
 
+// 设置 下载原图 按钮
+- (void)setupDownloadButton
+{
+    if (_photoModel.originURLString) {
+        _originButton.hidden = NO;
+        NSString *title = [NSString stringWithFormat:@"  查看原图(%.1fM)  ", _photoModel.originImageSize/1024.0/1024.0];
+        [_originButton setTitle:title forState:UIControlStateNormal];
+        [_originButton sizeToFit];
+        CGPoint center = _originButton.center;
+        center.x = [UIScreen mainScreen].bounds.size.width * 0.5;
+        _originButton.center = center;
+        CGRect frame = _originButton.frame;
+        frame.origin.y = [UIScreen mainScreen].bounds.size.height - 10 - frame.size.height;
+        _originButton.frame = frame;
+    }
+    BOOL hasOriginImageCache = [[YYImageCache sharedCache] containsImageForKey:_photoModel.originURLString];
+    // 图片有原图链接，并且本地有缓存，直接加载原图
+    if (_photoModel.originURLString && hasOriginImageCache) {
+        _originButton.hidden = NO;
+    }
+    // 有原图，但是本地没有缓存，显示加载原图按钮
+    else if (_photoModel.originURLString) {
+        _originButton.hidden = NO;
+    }
+    else {
+        _originButton.hidden = YES;
+    }
+}
+
 - (void)showImageWithPhotoModel:(KYPhotoModel *)photoModel;
 {
+    _photoModel = photoModel;
+    [self setupDownloadButton];
     UIImage *placeholderImage = nil;
     if ([self.zoomDelegate respondsToSelector:@selector(photoZoomViewPlaceholderImage)]) {
         placeholderImage = [self.zoomDelegate photoZoomViewPlaceholderImage];
@@ -114,13 +177,11 @@
         }
         return;
     }
-    if (_imageState == ShowImageStateSmall) {// 第一次加载，需要动画展示
+    BOOL hasOriginImageCache = [[YYImageCache sharedCache] containsImageForKey:photoModel.originURLString];
+    // 1，检测原图
+    if (photoModel.originURLString && hasOriginImageCache) {
         
-    }
-    // 1，检测大图
-    if (photoModel.bigURLString) {
-        
-        [_imageView yy_setImageWithURL:[NSURL URLWithString:photoModel.bigURLString]
+        [_imageView yy_setImageWithURL:[NSURL URLWithString:photoModel.originURLString]
                            placeholder:placeholderImage
                                options:kNilOptions
                               progress:^(NSInteger receivedSize, NSInteger expectedSize) {
@@ -130,6 +191,7 @@
                                  if (image) {
                                      [self becomeBigStateImage:_imageView.image animation:YES];
                                      _imageState = ShowImageStateOrigin;
+                                     _originButton.hidden = YES;
                                  }
                                  else {// 处理大图加载失效情况
                                      

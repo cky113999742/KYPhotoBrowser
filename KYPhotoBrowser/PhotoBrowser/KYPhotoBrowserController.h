@@ -16,6 +16,7 @@
 - (UIImageView *)sourceImageViewForIndex:(NSInteger)index;
 // 获取图片展示占位图
 - (UIImage *)photoBrowserPlaceholderImage;
+// 
 
 @end
 
@@ -33,7 +34,7 @@
 @property (nonatomic, assign) NSInteger imageCount;
 
 /**
- 图片数据 数组内可以是 KYPhotoModel， NSImage， NSString
+ 图片数据 数组内可以是 KYPhotoModel， NSImage， NSString， NSData
  */
 @property (nonatomic, strong) NSArray *images;
 

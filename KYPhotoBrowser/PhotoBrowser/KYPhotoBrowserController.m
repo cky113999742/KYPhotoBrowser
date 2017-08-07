@@ -22,6 +22,7 @@ typedef NS_ENUM(NSInteger, ZoomViewScrollDirection) {
 
 @property (nonatomic, strong) UIScrollView              *scrollView;
 @property (nonatomic, strong) UIView                    *coverView;
+@property (nonatomic, strong) UILabel                   *pageLabel;
 @property (nonatomic, assign) CGFloat                   lastScrollX;
 @property (nonatomic, strong) NSMutableDictionary       *zoomViewCache;
 @property (nonatomic, assign) ZoomViewScrollDirection   direction;
@@ -55,6 +56,8 @@ typedef NS_ENUM(NSInteger, ZoomViewScrollDirection) {
         else if ([obj isKindOfClass:[NSString class]]) {
             KYPhotoModel *model = [[KYPhotoModel alloc] init];
             model.thumbURLString = (NSString *)obj;
+            model.originURLString = obj;
+            model.originImageSize = 1020312;
             [imagesArray addObject:model];
         }
         else if ([obj isKindOfClass:[UIImage class]]) {
@@ -84,6 +87,12 @@ typedef NS_ENUM(NSInteger, ZoomViewScrollDirection) {
     _scrollView.showsHorizontalScrollIndicator = NO;
     _scrollView.pagingEnabled = YES;
     [self.view addSubview:_scrollView];
+    
+    _pageLabel = [[UILabel alloc] init];
+    _pageLabel.textColor = [UIColor grayColor];
+    _pageLabel.backgroundColor = [UIColor clearColor];
+    _pageLabel.alpha = 0.8;
+    [self.view addSubview:_pageLabel];
 }
 
 - (void)setupGestureHandle
@@ -110,6 +119,12 @@ typedef NS_ENUM(NSInteger, ZoomViewScrollDirection) {
 {
     if (index == _currentImageIndex) {
         // 改变指示标记
+        [self.pageLabel setText:[NSString stringWithFormat:@"%ld/%ld", (long)_currentImageIndex + 1, (long)_imageCount]];
+        [self.pageLabel sizeToFit];
+        CGRect frame = self.pageLabel.frame;
+        frame.origin.y = [UIScreen mainScreen].bounds.size.height - 10 - frame.size.height;
+        frame.origin.x = [UIScreen mainScreen].bounds.size.width - 10 - frame.size.width;
+        self.pageLabel.frame = frame;
     }
     if (index > -1 && index < _imageCount && _imageCount-index <= _images.count) {
         CGFloat scrollW = _scrollView.frame.size.width;
@@ -137,6 +152,18 @@ typedef NS_ENUM(NSInteger, ZoomViewScrollDirection) {
         imageView = [self.delegate sourceImageViewForIndex:_currentImageIndex];
     }
     else {
+        [UIView animateWithDuration:KYPhotoBrowserShowImageAnimationDuration
+                              delay:0
+             usingSpringWithDamping:1.f
+              initialSpringVelocity:1.f
+                            options:0
+                         animations:^{
+                            _coverView.alpha = 1;
+                         }
+                         completion:^(BOOL finished) {
+                            
+                         }];
+        
         return;
     }
     
@@ -239,7 +266,7 @@ typedef NS_ENUM(NSInteger, ZoomViewScrollDirection) {
 
 - (void)photoPreviewComponmentHidden:(BOOL)hidden
 {
-    
+    self.pageLabel.hidden = hidden;
 }
 
 #pragma mark - KYPhotoZoomViewDelegate
