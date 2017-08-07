@@ -50,8 +50,13 @@
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath;
 {
     HomeCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"HomeCell" forIndexPath:indexPath];
-    NSString *url = _imageArray[indexPath.item];
-    [cell updateImageURL:url];
+    NSObject *obj = _imageArray[indexPath.item];
+    if ([obj isKindOfClass:[UIImage class]]) {
+        [cell updateImage:(UIImage *)obj];
+    }
+    else if ([obj isKindOfClass:[NSString class]]) {
+        [cell updateImageURL:(NSString *)obj];
+    }
     
     return cell;
 }
@@ -66,8 +71,7 @@
 {
     [collectionView deselectItemAtIndexPath:indexPath animated:YES];
     NSArray *images = @[@"http://ohc6xoujj.bkt.clouddn.com/image_1.jpg", @"http://ohc6xoujj.bkt.clouddn.com/image_2.jpg", @"http://ohc6xoujj.bkt.clouddn.com/image_3.jpg", @"http://ohc6xoujj.bkt.clouddn.com/image_4.jpeg", @"http://ohc6xoujj.bkt.clouddn.com/image_5.jpeg", @"http://ohc6xoujj.bkt.clouddn.com/image_6.jpeg"];
-    KYPhotoBrowserController *vc = [KYPhotoBrowserController showPhotoBrowserWithImages:images currentImageIndex:indexPath.item];
-    vc.delegate = self;
+    [KYPhotoBrowserController showPhotoBrowserWithImages:images currentImageIndex:indexPath.item delegate:self];
 }
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
@@ -89,6 +93,13 @@
 {
     if (!_imageArray) {
         NSArray *images = @[@"http://ohc6xoujj.bkt.clouddn.com/image_1.jpg", @"http://ohc6xoujj.bkt.clouddn.com/image_2.jpg", @"http://ohc6xoujj.bkt.clouddn.com/image_3.jpg", @"http://ohc6xoujj.bkt.clouddn.com/image_4.jpeg", @"http://ohc6xoujj.bkt.clouddn.com/image_5.jpeg", @"http://ohc6xoujj.bkt.clouddn.com/image_6.jpeg"];
+//        UIImage *image1 = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"image_1" ofType:@"jpg"]];
+//        UIImage *image2 = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"image_2" ofType:@"jpg"]];
+//        UIImage *image3 = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"image_3" ofType:@"jpg"]];
+//        UIImage *image4 = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"image_4" ofType:@"jpeg"]];
+//        UIImage *image5 = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"image_5" ofType:@"jpeg"]];
+//        UIImage *image6 = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"image_6" ofType:@"jpeg"]];
+//        NSArray *images = @[image1, image2, image3, image4, image5, image6];
         _imageArray = [NSMutableArray arrayWithArray:images];
     }
     return _imageArray;

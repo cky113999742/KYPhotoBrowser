@@ -56,8 +56,6 @@ typedef NS_ENUM(NSInteger, ZoomViewScrollDirection) {
         else if ([obj isKindOfClass:[NSString class]]) {
             KYPhotoModel *model = [[KYPhotoModel alloc] init];
             model.thumbURLString = (NSString *)obj;
-            model.originURLString = obj;
-            model.originImageSize = 1020312;
             [imagesArray addObject:model];
         }
         else if ([obj isKindOfClass:[UIImage class]]) {
@@ -214,6 +212,11 @@ typedef NS_ENUM(NSInteger, ZoomViewScrollDirection) {
 
 + (instancetype)showPhotoBrowserWithImages:(NSArray *)images currentImageIndex:(NSInteger)currentImageIndex;
 {
+    return [self showPhotoBrowserWithImages:images currentImageIndex:currentImageIndex delegate:nil];
+}
+
++ (instancetype)showPhotoBrowserWithImages:(NSArray *)images currentImageIndex:(NSInteger)currentImageIndex delegate:( id <KYPhotoBrowserControllerDelegate>)delegate;
+{
     if (!images || ![images isKindOfClass:[NSArray class]] || images.count < 1) {
         return nil;
     }
@@ -227,6 +230,7 @@ typedef NS_ENUM(NSInteger, ZoomViewScrollDirection) {
     vc.imageCount = images.count;
     vc.currentImageIndex = currentImageIndex;
     [[KYPhotoBrowserManager sharedManager] presentWindowWithController:vc];
+    vc.delegate = delegate;
     return vc;
 }
 

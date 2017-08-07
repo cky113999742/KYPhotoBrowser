@@ -15,6 +15,7 @@
 @property (nonatomic, strong) KYPhotoModel  *photoModel;
 @property (nonatomic, strong) UIImageView   *imageView;
 @property (nonatomic, strong) UIButton      *originButton;
+@property (nonatomic, strong) UIActivityIndicatorView *activityIndicator;
 
 @end
 
@@ -67,13 +68,14 @@
     [self addGestureRecognizer:doubleTap];
     
     // 2 add single tap gesture
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction)];
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)];
     tap.numberOfTapsRequired = 1;
     tap.numberOfTouchesRequired = 1;
     [tap requireGestureRecognizerToFail:doubleTap];
     [self addGestureRecognizer:tap];
 }
 
+#pragma mark - 手势处理 && 事件处理
 // 下载原图
 - (void)downloadOriginImage
 {
@@ -81,6 +83,7 @@
     if ([self.zoomDelegate respondsToSelector:@selector(photoZoomViewPlaceholderImage)]) {
         placeholderImage = [self.zoomDelegate photoZoomViewPlaceholderImage];
     }
+    [self.activityIndicator startAnimating];
     [_imageView yy_setImageWithURL:[NSURL URLWithString:_photoModel.originURLString]
                        placeholder:placeholderImage
                            options:kNilOptions
@@ -89,11 +92,12 @@
                           }
                          transform:nil
                         completion:^(UIImage * _Nullable image, NSURL * _Nonnull url, YYWebImageFromType from, YYWebImageStage stage, NSError * _Nullable error) {
+                            [self.activityIndicator stopAnimating];
                             _originButton.hidden = YES;
                         }];
 }
 
-- (void)tapAction
+- (void)tapAction:(UIPanGestureRecognizer *)sender
 {
     [self dismissAnimation:YES];
 }
@@ -128,38 +132,10 @@
     return CGRectMake(x, y, width, height);
 }
 
+#pragma mark - API
 - (void)resetScale
 {
     [self setZoomScale:1.f animated:NO];
-}
-
-// 设置 下载原图 按钮
-- (void)setupDownloadButton
-{
-    if (_photoModel.originURLString) {
-        _originButton.hidden = NO;
-        NSString *title = [NSString stringWithFormat:@"  查看原图(%.1fM)  ", _photoModel.originImageSize/1024.0/1024.0];
-        [_originButton setTitle:title forState:UIControlStateNormal];
-        [_originButton sizeToFit];
-        CGPoint center = _originButton.center;
-        center.x = [UIScreen mainScreen].bounds.size.width * 0.5;
-        _originButton.center = center;
-        CGRect frame = _originButton.frame;
-        frame.origin.y = [UIScreen mainScreen].bounds.size.height - 10 - frame.size.height;
-        _originButton.frame = frame;
-    }
-    BOOL hasOriginImageCache = [[YYImageCache sharedCache] containsImageForKey:_photoModel.originURLString];
-    // 图片有原图链接，并且本地有缓存，直接加载原图
-    if (_photoModel.originURLString && hasOriginImageCache) {
-        _originButton.hidden = NO;
-    }
-    // 有原图，但是本地没有缓存，显示加载原图按钮
-    else if (_photoModel.originURLString) {
-        _originButton.hidden = NO;
-    }
-    else {
-        _originButton.hidden = YES;
-    }
 }
 
 - (void)showImageWithPhotoModel:(KYPhotoModel *)photoModel;
@@ -196,17 +172,22 @@
                                  else {// 处理大图加载失效情况
                                      
                                  }
-        }];
+                             }];
     }
     // 2，加载普通图片
     else if (photoModel.thumbURLString) {
         
+        BOOL hasThumbImageCache = [[YYImageCache sharedCache] containsImageForKey:photoModel.thumbURLString];
+        if (!hasThumbImageCache) {
+            [self.activityIndicator startAnimating];
+        }
         [_imageView yy_setImageWithURL:[NSURL URLWithString:photoModel.thumbURLString]
                            placeholder:placeholderImage
                                options:kNilOptions
                               progress:^(NSInteger receivedSize, NSInteger expectedSize) {
                                   
                               } transform:nil completion:^(UIImage * _Nullable image, NSURL * _Nonnull url, YYWebImageFromType from, YYWebImageStage stage, NSError * _Nullable error) {
+                                  [self.activityIndicator stopAnimating];
                                   if (image) {
                                       [self becomeBigStateImage:_imageView.image animation:YES];
                                       _imageState = ShowImageStateBig;
@@ -229,6 +210,36 @@
         _imageState = ShowImageStateBig;
     }
     
+}
+
+#pragma mark - 辅助函数
+// 设置 下载原图 按钮
+- (void)setupDownloadButton
+{
+    if (_photoModel.originURLString) {
+        _originButton.hidden = NO;
+        NSString *title = [NSString stringWithFormat:@"  查看原图(%.1fM)  ", _photoModel.originImageSize/1024.0/1024.0];
+        [_originButton setTitle:title forState:UIControlStateNormal];
+        [_originButton sizeToFit];
+        CGPoint center = _originButton.center;
+        center.x = [UIScreen mainScreen].bounds.size.width * 0.5;
+        _originButton.center = center;
+        CGRect frame = _originButton.frame;
+        frame.origin.y = [UIScreen mainScreen].bounds.size.height - 10 - frame.size.height;
+        _originButton.frame = frame;
+    }
+    BOOL hasOriginImageCache = [[YYImageCache sharedCache] containsImageForKey:_photoModel.originURLString];
+    // 图片有原图链接，并且本地有缓存，直接加载原图
+    if (_photoModel.originURLString && hasOriginImageCache) {
+        _originButton.hidden = NO;
+    }
+    // 有原图，但是本地没有缓存，显示加载原图按钮
+    else if (_photoModel.originURLString) {
+        _originButton.hidden = NO;
+    }
+    else {
+        _originButton.hidden = YES;
+    }
 }
 
 - (void)becomeBigStateImage:(UIImage *)image animation:(BOOL)animation
@@ -295,11 +306,6 @@
     [[KYPhotoBrowserManager sharedManager] dismissWindow:YES];
 }
 
-- (void)tapAction:(UIPanGestureRecognizer *)sender
-{
-    [self dismissAnimation:YES];
-}
-
 #pragma mark - UIScrollViewDelegate
 - (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView
 {
@@ -332,5 +338,17 @@
     self.imageView.frame = contentsFrame;
 }
 
+#pragma mark - lazy
+- (UIActivityIndicatorView *)activityIndicator
+{
+    if (!_activityIndicator) {
+        _activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+        _activityIndicator.center = CGPointMake(self.frame.size.width*0.5, self.frame.size.height*0.5);
+        [self addSubview:_activityIndicator];
+        _activityIndicator.tintColor = [UIColor grayColor];
+        _activityIndicator.hidesWhenStopped = YES;
+    }
+    return _activityIndicator;
+}
 
 @end
