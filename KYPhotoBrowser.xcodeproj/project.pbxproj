@@ -33,7 +33,6 @@
 		6772692EFF948EBDA7B5BE9A /* libPods-KYPhotoBrowser.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-KYPhotoBrowser.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		761428028545A41E031D3BB9 /* Pods-KYPhotoBrowser.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KYPhotoBrowser.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KYPhotoBrowser/Pods-KYPhotoBrowser.debug.xcconfig"; sourceTree = "<group>"; };
 		C9E96575A6839290D7F149CC /* Pods-KYPhotoBrowser.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KYPhotoBrowser.release.xcconfig"; path = "Pods/Target Support Files/Pods-KYPhotoBrowser/Pods-KYPhotoBrowser.release.xcconfig"; sourceTree = "<group>"; };
-		FA63CDD11F39B82700868C7F /* KYPhotoBrowser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KYPhotoBrowser.h; sourceTree = "<group>"; };
 		FAF876C11F31871B00C9AA2E /* KYPhotoBrowser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KYPhotoBrowser.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAF876D01F31871B00C9AA2E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FAF876D31F31871B00C9AA2E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -143,7 +142,6 @@
 		FAF876E31F31884200C9AA2E /* PhotoBrowser */ = {
 			isa = PBXGroup;
 			children = (
-				FA63CDD11F39B82700868C7F /* KYPhotoBrowser.h */,
 				FAF877001F31D07C00C9AA2E /* KYPhotoBrowserMacro.h */,
 				FAF876E41F31890700C9AA2E /* KYPhotoBrowserController.h */,
 				FAF876E51F31890700C9AA2E /* KYPhotoBrowserController.m */,
