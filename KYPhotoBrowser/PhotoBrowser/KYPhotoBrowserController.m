@@ -205,11 +205,7 @@ typedef NS_ENUM(NSInteger, ZoomViewScrollDirection) {
     }];
 }
 
-- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
-{
-    [[KYPhotoBrowserManager sharedManager] dismissWindow:YES];
-}
-
+#pragma mark - API
 + (instancetype)showPhotoBrowserWithImages:(NSArray *)images currentImageIndex:(NSInteger)currentImageIndex;
 {
     return [self showPhotoBrowserWithImages:images currentImageIndex:currentImageIndex delegate:nil];
@@ -232,6 +228,12 @@ typedef NS_ENUM(NSInteger, ZoomViewScrollDirection) {
     [[KYPhotoBrowserManager sharedManager] presentWindowWithController:vc];
     vc.delegate = delegate;
     return vc;
+}
+
+- (void)dismissAnimation:(BOOL)animation
+{
+    KYPhotoZoomView *zoomView = [_zoomViewCache objectForKey:[NSNumber numberWithInteger:_currentImageIndex]];
+    [zoomView dismissAnimation:animation];
 }
 
 #pragma mark - ScrollViewDelegate
