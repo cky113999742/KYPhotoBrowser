@@ -1,3 +1,33 @@
-*.xcuserstate
+#git清除本地缓存(忽略文件无效时，执行下边的命令)
+#git rm -r --cached .
+
 .DS_Store
+# Xcode
+*.pbxuser
+!default.pbxuser
+
+*.mode1v3
+!default.mode1v3
+*.mode2v3
+!default.mode2v3
+*.perspectivev3
+!default.perspectivev3
+xcuserdata
+*.xccheckout
+*.moved-aside
+DerivedData
+*.hmap
 *.ipa
+*.xcuserstate
+
+#忽略 xcuserdata  目录下的所有文件
+xcuserdata/*
+
+#忽略以.xcuserdatad 结尾的文件或目录(如：RedLips.xcworkspace/xcuserdata)
+*.xcuserdatad
+
+#忽略以.开头的文件或目录(如：.DS_Stroe)
+.*
+
+#忽略以.开头但是除.gitignore
+!.gitignore
