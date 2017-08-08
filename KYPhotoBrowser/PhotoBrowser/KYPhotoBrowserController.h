@@ -16,13 +16,13 @@
 - (UIImageView *)sourceImageViewForIndex:(NSInteger)index;
 // 获取图片展示占位图
 - (UIImage *)photoBrowserPlaceholderImage;
-// 
 
 @end
 
 @interface KYPhotoBrowserController : UIViewController
 
 @property (nonatomic, weak) id <KYPhotoBrowserControllerDelegate> delegate;
+@property (nonatomic, strong, readonly) UIScrollView              *scrollView;
 
 /**
  *  当前显示的图片位置索引 , 默认是0
