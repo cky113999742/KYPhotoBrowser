@@ -1,12 +1,22 @@
 # KYPhotoBrowser
 APP中图片浏览功能是比较常见的，为了使用方便，自己封装了一个，仅供大家参考。主要的功能有：
 
+
 1、动画效果放大先看几张效果图吧。
+
+
 ![image](http://upload-images.jianshu.io/upload_images/4320310-a73c20bc2ce524bb.gif?imageMogr2/auto-orient/strip)
+
 2、点击指定区域放大
+
+
 ![image](http://upload-images.jianshu.io/upload_images/4320310-e5130b78618ff258.gif?imageMogr2/auto-orient/strip)
+
 3、下拉退出
+
+
 ![image](http://upload-images.jianshu.io/upload_images/4320310-38942bff76511462.gif?imageMogr2/auto-orient/strip)
+
 ### 一、集成方法
 ##### 1、pod集成
 ```
