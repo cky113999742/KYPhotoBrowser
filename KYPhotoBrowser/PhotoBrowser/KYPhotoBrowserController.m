@@ -42,6 +42,9 @@ typedef NS_ENUM(NSInteger, ZoomViewScrollDirection) {
     [self setupScrollView];
     [self loadImageAtIndex:_currentImageIndex];
     [self loadFirstImage];
+    if (_customUIBlock) {
+        _customUIBlock(self);
+    }
 }
 
 // 处理images内数据，把images中的数据统一成 KYPhotoModel

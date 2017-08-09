@@ -9,6 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "KYPhotoModel.h"
 
+@class KYPhotoBrowserController;
+typedef void(^KYCustomUIBlock)(KYPhotoBrowserController *vc);
+
 @protocol KYPhotoBrowserControllerDelegate <NSObject>
 
 @optional
@@ -21,6 +24,7 @@
 
 @interface KYPhotoBrowserController : UIViewController
 
+@property (nonatomic, copy) KYCustomUIBlock customUIBlock;  /**< 在viewDidLoad的最后调用，方便用户自定义UI */
 @property (nonatomic, weak) id <KYPhotoBrowserControllerDelegate> delegate;
 @property (nonatomic, strong, readonly) UIScrollView              *scrollView;
 @property (nonatomic, strong, readonly) UILabel                   *pageLabel;
